@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "0bd478dc-6cb1-49fd-bd7c-8a28f00916d5",
+		"name": "Hopla Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5839990"
+	},
+	"item": [
+		{
+			"name": "Trae todos los tickets",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDE4MTExLCJpYXQiOjE3MTM0MTc4MTEsImp0aSI6IjVjMmJiMGU5NTcyNTQ0NzM4ZDE5OTc0ODYxMTAxZGRjIiwidXNlcl9pZCI6MX0.czNkbK0rat_92OMlTtYlgPjal5BmoETUIMN4BOGuEYA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tickets/?fecha_inicio=2024-04-14&fecha_fin=2024-04-19&status=completado",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tickets",
+						""
+					],
+					"query": [
+						{
+							"key": "fecha_inicio",
+							"value": "2024-04-14"
+						},
+						{
+							"key": "fecha_fin",
+							"value": "2024-04-19"
+						},
+						{
+							"key": "status",
+							"value": "completado"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guarda Ticket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDE0Mzg0LCJpYXQiOjE3MTM0MTQwODQsImp0aSI6ImViZDg4ZWQ2ZTJlYTRiN2FiODA2M2VhZTkyMDYzYTZlIiwidXNlcl9pZCI6MX0.fNXIWiaGGIot36n5Q94rYuJCKeEtghSNpAe9FHfy3u8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ticket_description\": \"new Ticket 1\",\n    \"num_images\": 2,\n    \"status\": \"Pendiente\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tickets/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tickets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDE4MTExLCJpYXQiOjE3MTM0MTc4MTEsImp0aSI6IjVjMmJiMGU5NTcyNTQ0NzM4ZDE5OTc0ODYxMTAxZGRjIiwidXNlcl9pZCI6MX0.czNkbK0rat_92OMlTtYlgPjal5BmoETUIMN4BOGuEYA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": [
+								"/Users/colvera/Downloads/imagenes-test/imagen-1.jpg",
+								"/Users/colvera/Downloads/imagenes-test/imagen-2.jpg"
+							]
+						},
+						{
+							"key": "id_ticket",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/ticket_images/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ticket_images",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genera token JWT",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"colvera\",\n    \"password\": \"kldnpdlvkm\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recupera detalle de un Ticket",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDE4MDAxLCJpYXQiOjE3MTM0MTc3MDEsImp0aSI6IjhlNWYyODU5ZjkyYjQyYzg5MDIyZjk5NDk0YjE3MjE4IiwidXNlcl9pZCI6MX0.m7xR38-V-QYG0XRUBNc0GDJxG7geIhAUtaGX2tDkxjQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/detalle/6/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"detalle",
+						"6",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
